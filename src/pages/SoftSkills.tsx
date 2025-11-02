@@ -10,7 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 
 // TODO: Add your Gemini API key here or use environment variable
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || "";
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
+const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
 const SoftSkills = () => {
   const { toast } = useToast();
@@ -75,7 +75,9 @@ Provide practical, actionable advice with examples. Be encouraging, supportive, 
       });
 
       if (!response.ok) {
-        throw new Error("Failed to get response from Gemini");
+        const errorData = await response.json().catch(() => ({}));
+        console.error("Gemini API error:", response.status, errorData);
+        throw new Error(errorData.error?.message || `API error: ${response.status}`);
       }
 
       const data = await response.json();
@@ -86,7 +88,7 @@ Provide practical, actionable advice with examples. Be encouraging, supportive, 
       console.error("Error calling Gemini API:", error);
       toast({
         title: "Error",
-        description: "Failed to get response. Please check your API key and try again.",
+        description: error instanceof Error ? error.message : "Failed to get response. Please check your API key and try again.",
         variant: "destructive",
       });
     } finally {
