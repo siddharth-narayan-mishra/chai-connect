@@ -10,7 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 
 // TODO: Add your Gemini API key here or use environment variable
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || "";
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
+const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
 const SoftSkills = () => {
   const { toast } = useToast();
@@ -58,7 +58,7 @@ const SoftSkills = () => {
 - Time management and productivity
 - Conflict resolution and negotiation
 
-Provide practical, actionable advice with examples. Be encouraging, supportive, and specific. Keep responses concise but helpful.`;
+Provide practical, actionable advice with examples. Be encouraging, supportive, and specific. Keep responses concise but helpful. Answer in 5 small points always, don't elaborate much.`;
 
       const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
         method: "POST",
@@ -114,7 +114,7 @@ Provide practical, actionable advice with examples. Be encouraging, supportive, 
 
             <div className="flex flex-col lg:flex-row gap-6">
               {/* Left Section - 70% */}
-              <div className="lg:w-[70%] space-y-6">
+              <div className="lg:w-[55%] space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card>
                     <CardHeader>
@@ -183,27 +183,32 @@ Provide practical, actionable advice with examples. Be encouraging, supportive, 
               </div>
 
               {/* Right Section - 30% - Chat Interface */}
-              <div className="lg:w-[30%]">
-                <Card className="sticky top-24 flex flex-col h-[600px]">
-                  <CardHeader>
+              <div className="lg:w-[45%]">
+                <Card className="sticky top-24 h-[calc(100vh-150px)] max-h-[600px] flex flex-col">
+                  <CardHeader className="flex-none">
                     <CardTitle>AI Soft Skills Coach</CardTitle>
                     <CardDescription>Chat with AI to improve your soft skills</CardDescription>
                   </CardHeader>
-                  <CardContent className="flex-1 flex flex-col p-0">
-                    <div className="flex-1 overflow-y-auto px-4 space-y-4">
+                  <CardContent className="flex-1 flex flex-col overflow-hidden p-0">
+                    <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 scrollbar-thin">
                       {messages.map((message, index) => (
                         <div
                           key={index}
-                          className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+                          className={`flex ${message.role === "user" ? "justify-end" : "justify-start"} w-full`}
                         >
                           <div
-                            className={`max-w-[85%] rounded-lg px-4 py-2 ${
+                            className={`max-w-[85%] break-words rounded-lg px-4 py-2 ${
                               message.role === "user"
                                 ? "bg-primary text-primary-foreground"
                                 : "bg-muted"
                             }`}
+                            style={{ 
+                              wordBreak: 'break-word', 
+                              overflowWrap: 'break-word',
+                              whiteSpace: 'pre-wrap'
+                            }}
                           >
-                            <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                            <p className="text-sm">{message.content}</p>
                           </div>
                         </div>
                       ))}
@@ -216,13 +221,14 @@ Provide practical, actionable advice with examples. Be encouraging, supportive, 
                       )}
                       <div ref={messagesEndRef} />
                     </div>
-                    <form onSubmit={handleSubmit} className="p-4 border-t">
+                    <form onSubmit={handleSubmit} className="flex-none p-4 border-t bg-background">
                       <div className="flex gap-2">
                         <Input
                           value={input}
                           onChange={(e) => setInput(e.target.value)}
                           placeholder="Ask about soft skills..."
                           disabled={isLoading}
+                          className="flex-1"
                         />
                         <Button type="submit" size="icon" disabled={isLoading}>
                           <Send className="w-4 h-4" />

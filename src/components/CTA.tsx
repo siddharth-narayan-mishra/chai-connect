@@ -1,7 +1,7 @@
 import { Button } from "./ui/button";
 import { Coffee, ArrowRight } from "lucide-react";
 import coffeeIcon from "@/assets/coffee-icon.png";
-
+   
 const CTA = () => {
   return (
     <section className="py-20 bg-gradient-hero">

@@ -10,7 +10,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
-
+   
 const AcademicSupport = () => {
   const { toast } = useToast();
   const [mentorName, setMentorName] = useState("");
