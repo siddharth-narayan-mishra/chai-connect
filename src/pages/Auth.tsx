@@ -4,9 +4,12 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Coffee } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 const Auth = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
   const [signInEmail, setSignInEmail] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
   const [signUpEmail, setSignUpEmail] = useState("");
@@ -17,12 +20,22 @@ const Auth = () => {
     e.preventDefault();
     // Authentication logic will go here
     console.log("Sign in:", signInEmail);
+    toast({
+      title: "Welcome back!",
+      description: "You've successfully signed in.",
+    });
+    navigate("/features");
   };
 
   const handleSignUp = (e: React.FormEvent) => {
     e.preventDefault();
     // Registration logic will go here
     console.log("Sign up:", signUpEmail, signUpName);
+    toast({
+      title: "Account Created!",
+      description: "Welcome to bytee! Let's get started.",
+    });
+    navigate("/features");
   };
 
   return (
