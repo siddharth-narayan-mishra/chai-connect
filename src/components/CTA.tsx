@@ -1,6 +1,7 @@
 import { Button } from "./ui/button";
 import { Coffee, ArrowRight } from "lucide-react";
 import coffeeIcon from "@/assets/coffee-icon.png";
+import { Link } from "react-router-dom";
    
 const CTA = () => {
   return (
@@ -21,13 +22,12 @@ const CTA = () => {
               Your next breakthrough is just a conversation away.
             </p>
             <div className="flex flex-wrap gap-4 justify-center pt-4">
-              <Button variant="secondary" size="lg" className="group">
-                Join bytee Today
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button variant="outline" size="lg" className="bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                Learn More
-              </Button>
+              <Link to="/auth">
+                <Button variant="secondary" size="lg" className="group">
+                  Join bytee Today
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

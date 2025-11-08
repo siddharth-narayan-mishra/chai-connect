@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -13,15 +13,31 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Coins, Pencil, Star, Plus } from "lucide-react";
+import { Link } from "react-router-dom";
 
 /* ------------------ Mock API ------------------ */
 const fetchUserData = async () => {
   return Promise.resolve({
     name: "Siddharth Mishra",
+    email: "siddharth@example.com",
+    year: "4th Year",
+    department: "Computer Science and Engineering",
+    college: "National Institute of Technologu Rourkela",
     bio: "Tech Lead @OpenCode | Web Developer | Passionate about open-source and collaborative learning.",
     about:
       "I’m passionate about building software that empowers people to learn and collaborate. I love mentoring and exploring system design, open-source, and web performance.",
     credits: 250,
+    sessionsCount: 25,
+    sessions: [
+      { title: "Intro to React Optimizations", date: "2025-05-12" },
+      { title: "Building REST APIs", date: "2025-04-22" },
+      { title: "Open-source collaboration", date: "2025-03-18" },
+    ],
+    recentActivities: [
+      "Hosted a session: 'Intro to React Optimizations'",
+      "Reviewed: 'Aarav Mehta' session",
+      "Completed mentorship: 'Frontend architecture'",
+    ],
     offeredSkills: ["React", "Next.js", "Node.js", "UI/UX"],
     wantedSkills: ["Rust", "Machine Learning"],
     reviews: [
@@ -67,6 +83,7 @@ export default function MyProfile() {
   >(null);
   const [newSkill, setNewSkill] = useState("");
   const [showAllReviews, setShowAllReviews] = useState(false);
+  const reviewsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     fetchUserData().then((data) => setUser(data));
@@ -88,6 +105,13 @@ export default function MyProfile() {
     wantedSkills,
     reviews,
     stats,
+    email,
+    year,
+    department,
+    college,
+    sessionsCount,
+    recentActivities,
+    sessions,
   } = user;
   const displayedReviews = showAllReviews ? reviews : reviews.slice(0, 4);
 
@@ -115,6 +139,13 @@ export default function MyProfile() {
     setEditingMode(null);
   };
 
+  const handleViewReviews = () => {
+    setShowAllReviews(true);
+    setTimeout(() => {
+      reviewsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
+
   /* ------------------ Render ------------------ */
   return (
     <div className="min-h-screen bg-muted/30 p-6 md:p-10">
@@ -134,6 +165,7 @@ export default function MyProfile() {
               </Avatar>
               <div>
                 <h1 className="text-2xl font-bold tracking-tight">{name}</h1>
+                <p className="text-sm text-muted-foreground">{email}</p>
                 <p className="text-muted-foreground">
                   {bio.length > 90 ? bio.slice(0, 90) + "..." : bio}
                 </p>
@@ -144,6 +176,9 @@ export default function MyProfile() {
                     </Badge>
                   ))}
                 </div>
+                <div className="mt-2 text-xs text-muted-foreground">
+                  {year} • {department} • {college}
+                </div>
               </div>
             </div>
 
@@ -152,6 +187,10 @@ export default function MyProfile() {
                 <Coins className="h-5 w-5" />
                 <span>{credits} credits</span>
               </div>
+              <div className="text-sm text-muted-foreground">
+                <strong>{sessionsCount}</strong> sessions •{" "}
+                <strong>{stats.rating}</strong> rating
+              </div>
               <Button
                 variant="outline"
                 size="sm"
@@ -159,6 +198,11 @@ export default function MyProfile() {
               >
                 <Pencil className="mr-2 h-4 w-4" /> Edit Profile
               </Button>
+              <Link to="/credits" className="w-full md:w-auto">
+                <Button variant="secondary" size="sm" className="mt-2">
+                  Earn Credits
+                </Button>
+              </Link>
             </div>
           </CardContent>
         </Card>
@@ -215,45 +259,101 @@ export default function MyProfile() {
           ))}
         </div>
 
-        {/* Reviews */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Reviews</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            {displayedReviews.map((review: any, i: number) => (
-              <div key={i}>
-                <div className="flex items-center justify-between">
-                  <h4 className="font-semibold">{review.name}</h4>
-                  <div className="flex items-center gap-1 text-yellow-500">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <Star
-                        key={index}
-                        className={`h-3.5 w-3.5 ${
-                          index < 4 ? "fill-current" : "text-muted fill-muted"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-                <p className="text-muted-foreground mt-1">{review.comment}</p>
-                {i < displayedReviews.length - 1 && (
-                  <Separator className="my-4" />
-                )}
+        {/* Quick Actions & Recent Activities */}
+        <div className="grid gap-6 md:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <CardTitle>Quick Actions</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <p className="text-sm text-muted-foreground">
+                Public: sessions details, reviews & ratings are visible to other
+                users. Use the actions below to view them or manage account
+                settings.
+              </p>
+              <div className="flex flex-col gap-2">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    // navigate to sessions list (unified route)
+                    window.location.href = "/sessions";
+                  }}
+                >
+                  View Sessions ({sessionsCount})
+                </Button>
+                <Button variant="ghost" onClick={handleViewReviews}>
+                  Reviews & Ratings
+                </Button>
+                <Button
+                  variant="secondary"
+                  onClick={() => setEditingMode("profile")}
+                >
+                  Account Settings
+                </Button>
               </div>
-            ))}
+            </CardContent>
+          </Card>
 
-            <div className="flex justify-center mt-4">
-              <Button
-                variant="ghost"
-                onClick={() => setShowAllReviews(!showAllReviews)}
-                className="text-sm font-medium"
-              >
-                {showAllReviews ? "Show Less Reviews" : "Read More Reviews"}
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Recent Activities</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="list-disc pl-5 text-sm text-muted-foreground">
+                {recentActivities.map((act: string, idx: number) => (
+                  <li key={idx}>{act}</li>
+                ))}
+              </ul>
+              <Separator className="my-4" />
+              <div className="text-xs text-muted-foreground">
+                Sessions ({sessions.length}) — click "View Sessions" to explore
+                details.
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Reviews */}
+        <div ref={reviewsRef} id="reviews">
+          <Card>
+            <CardHeader>
+              <CardTitle>Reviews</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {displayedReviews.map((review: any, i: number) => (
+                <div key={i}>
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-semibold">{review.name}</h4>
+                    <div className="flex items-center gap-1 text-yellow-500">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <Star
+                          key={index}
+                          className={`h-3.5 w-3.5 ${
+                            index < 4 ? "fill-current" : "text-muted fill-muted"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground mt-1">{review.comment}</p>
+                  {i < displayedReviews.length - 1 && (
+                    <Separator className="my-4" />
+                  )}
+                </div>
+              ))}
+
+              <div className="flex justify-center mt-4">
+                <Button
+                  variant="ghost"
+                  onClick={() => setShowAllReviews(!showAllReviews)}
+                  className="text-sm font-medium"
+                >
+                  {showAllReviews ? "Show Less Reviews" : "Read More Reviews"}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Activity Summary */}
         <Card>

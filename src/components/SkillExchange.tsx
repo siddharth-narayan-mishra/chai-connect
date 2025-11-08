@@ -106,9 +106,11 @@ const SkillExchange = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button variant="hero" size="lg">
-            Post Your Skill
-          </Button>
+          <Link to="/forum">
+            <Button variant="hero" size="lg">
+              Post Your Skill
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

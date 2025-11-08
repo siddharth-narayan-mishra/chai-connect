@@ -128,12 +128,14 @@ const Mentorship = () => {
 								<p className="mb-4 opacity-90">
 									Get guidance from experienced seniors in your field
 								</p>
-								<Button
-									variant="outline"
-									className="w-full border-2 hover:bg-background"
-								>
-									Browse Mentors
-								</Button>
+								<Link to="/forum" className="block">
+									<Button
+										variant="outline"
+										className="w-full border-2 hover:bg-background"
+									>
+										Browse Mentors
+									</Button>
+								</Link>
 							</Card>
 						</div>
 					</div>
