@@ -1,73 +1,70 @@
-# Welcome to your Lovable project
+# Bytee - Knowledge Exchange Platform
 
-## Project info
+A platform where students can exchange skills, mentor each other, and learn together over virtual chai sessions.
 
-**URL**: https://lovable.dev/projects/6e0f57ab-cae2-4544-8f31-79d94456b6f2
+## 🚀 Features
 
-## How can I edit this code?
+- **Skill Exchange**: Exchange knowledge with peers using chai credits
+- **Mentorship**: Connect with experienced seniors for guidance
+- **Forum**: Engage in discussions and get help from the community
+- **Events**: Join study groups, workshops, and casual chai meetups
+- **Credit System**: Earn and spend chai credits through meaningful interactions
 
-There are several ways of editing your application.
+## 💻 Tech Stack
 
-**Use Lovable**
+- React + TypeScript
+- Tailwind CSS
+- Shadcn/ui Components
+- React Router v6
+- React Query
+- Lucide Icons
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6e0f57ab-cae2-4544-8f31-79d94456b6f2) and start prompting.
+## 🛠 Setup & Installation
 
-Changes made via Lovable will be committed automatically to this repo.
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/chai-connect.git
+cd chai-connect
+```
 
-**Use your preferred IDE**
+2. Install dependencies:
+```bash
+npm install
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## 📁 Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+src/
+  ├── components/     # Reusable UI components
+  ├── pages/         # Page components/routes
+  ├── assets/        # Static assets
+  └── lib/           # Utilities and helpers
+```
 
-**Use GitHub Codespaces**
+## 🤝 Contributing
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## What technologies are used for this project?
+## 📝 License
 
-This project is built with:
+MIT License - feel free to use this project for learning and development.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 👥 Team
 
-## How can I deploy this project?
+- [Your Name] - Project Lead & Developer
+- [Add team members]
 
-Simply open [Lovable](https://lovable.dev/projects/6e0f57ab-cae2-4544-8f31-79d94456b6f2) and click on Share -> Publish.
+## 🌟 Acknowledgments
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- Shadcn for the amazing UI components
+- All contributors and early testers
