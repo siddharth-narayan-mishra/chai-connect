@@ -1,6 +1,7 @@
 import { Coffee } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
+import { User } from "lucide-react";
 
 const Header = () => {
   return (
@@ -21,10 +22,10 @@ const Header = () => {
             <a href="#mentorship" className="text-foreground hover:text-primary transition-colors">
               Mentorship
             </a>
-            <a href="#forum" className="text-foreground hover:text-primary transition-colors">
+            <a href="forum" className="text-foreground hover:text-primary transition-colors">
               Forum
             </a>
-            <a href="#events" className="text-foreground hover:text-primary transition-colors">
+            <a href="events" className="text-foreground hover:text-primary transition-colors">
               Events
             </a>
           </nav>
@@ -35,6 +36,12 @@ const Header = () => {
             </Link>
             <Link to="/features">
               <Button variant="hero" size="default">Get Started</Button>
+            </Link>
+
+            <Link to="/profile" title="Your profile" aria-label="Your profile">
+              <Button variant="ghost" size="icon" className="p-2">
+                <User className="w-5 h-5 text-foreground" />
+              </Button>
             </Link>
           </div>
         </div>
