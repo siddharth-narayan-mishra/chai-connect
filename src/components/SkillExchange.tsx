@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Coffee, Star, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const skills = [
   {
@@ -94,9 +95,11 @@ const SkillExchange = () => {
                   </div>
                 </div>
 
-                <Button className="w-full" variant="outline">
-                  Connect
-                </Button>
+                <Link to="/events" className="block">
+                  <Button className="w-full" variant="outline">
+                    Connect
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           ))}
