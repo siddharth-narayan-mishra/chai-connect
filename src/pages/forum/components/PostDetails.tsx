@@ -18,9 +18,10 @@ import { toast } from "sonner";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { formatDate } from "@/lib/utils";
+import { getAuthToken } from "@/lib/getAuthToken";
 
 const API_BASE = import.meta.env.VITE_API_BASE;
-const AUTH_TOKEN = import.meta.env.VITE_AUTH_TOKEN;
+const AUTH_TOKEN = getAuthToken();
 
 export default function PostDetailPage() {
   const { postId } = useParams();

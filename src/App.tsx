@@ -25,6 +25,8 @@ import { useEffect, useState } from "react";
 import PostDetailPage from "./pages/forum/components/PostDetails";
 import Events from "./pages/events/Events";
 import AnonymousQA from "./pages/AnonymousQA";
+import ExchangeRequestView from "./pages/exchange/components/ExchangeRequestView";
+import Navbar from "./components/Navbar";
 
 const queryClient = new QueryClient();
 
@@ -69,6 +71,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <Navbar/>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
@@ -78,15 +81,19 @@ const App = () => {
             <Route path="/project-help" element={<ProjectHelp />} />
             <Route path="/soft-skills" element={<SoftSkills />} />
             <Route path="/credits" element={<Credits />} />
-            <Route path="/anonymous-qa" element={<AnonymousQA/>} />
+            <Route path="/anonymous-qa" element={<AnonymousQA />} />
             <Route path="/events" element={<Events />} />
             <Route path="/skillExchange" element={<SkillExchange />} />
             <Route path="/start-mentoring" element={<StartMentoring />} />
             <Route path="/trust-score" element={<TrustScore />} />
             <Route path="/video-analyzer" element={<VideoAnalyzer />} />
             <Route path="/skillexchange" element={<SkillExchangeBoard />} />
+            <Route
+              path="/skillexchange/:requestId"
+              element={<ExchangeRequestView />}
+            />
             <Route path="/sessions" element={<Sessions />} />
-            <Route path="/user" element={<UserProfile />} />
+            <Route path="/user/:username" element={<UserProfile />} />
             <Route path="/userown" element={<MyProfile />} />
             <Route path="/profile" element={<MyProfile />} />
             <Route path="/forum" element={<ForumPage />} />
