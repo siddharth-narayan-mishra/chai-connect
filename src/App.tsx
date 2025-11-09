@@ -7,7 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import UserProfile from "./pages/UserProfile";
 import MyProfile from "./pages/UserProfileOwn";
-import ForumPage from "./pages/Forum";
+import ForumPage from "./pages/forum/Forum";
 import SkillExchangeBoard from "./pages/SkillExchange";
 import Auth from "./pages/Auth";
 import Features from "./pages/Features";
@@ -24,56 +24,9 @@ import VideoAnalyzer from "./pages/VideoAnalyzer";
 import Sessions from "./pages/Sessions";
 import StartMentoring from "./pages/StartMentoring";
 import { useEffect, useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import PostDetailPage from "./pages/forum/components/PostDetails";
 
 const queryClient = new QueryClient();
-
-// --- Add helper DummyAvatar ---
-function DummyAvatar({ src, alt, initials, className }: any) {
-  const [errored, setErrored] = useState(false);
-  return (
-    <Avatar className={className}>
-      {!errored && src ? (
-        <AvatarImage
-          src={src}
-          alt={alt}
-          onError={() => {
-            setErrored(true);
-          }}
-        />
-      ) : (
-        <AvatarFallback>
-          {/* simple inline dummy SVG cup icon */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="inline-block"
-          >
-            <path d="M2 7h14v5a5 5 0 01-5 5H7a5 5 0 01-5-5V7z"></path>
-            <path d="M16 8v3"></path>
-            <path d="M20 8a2 2 0 010 4"></path>
-          </svg>
-          {/* fallback initials if provided */}
-          <span className="ml-1 text-xs">{initials}</span>
-        </AvatarFallback>
-      )}
-    </Avatar>
-  );
-}
-// --- end helper ---
-
-const TopNav = ({ signedIn, user, onSignOut }: any) => {
-  // Top navigation hidden by returning null so "Chai Connect" and "Sign In" won't render.
-  return null;
-};
 
 const App = () => {
   // Mock sign-in state for demo. In real app, hook into auth provider.
@@ -116,7 +69,6 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <TopNav signedIn={signedIn} user={user} onSignOut={handleSignOut} />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
@@ -138,6 +90,7 @@ const App = () => {
             <Route path="/userown" element={<MyProfile />} />
             <Route path="/profile" element={<MyProfile />} />
             <Route path="/forum" element={<ForumPage />} />
+            <Route path="/post/:postId" element={<PostDetailPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
