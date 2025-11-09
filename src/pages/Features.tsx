@@ -73,7 +73,6 @@ const features = [
 const Features = () => {
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="pt-24 pb-16 bg-gradient-hero">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-fade-in">

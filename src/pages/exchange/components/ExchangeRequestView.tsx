@@ -25,9 +25,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import { getAuthToken } from "@/lib/getAuthToken";
 
 const API_BASE = import.meta.env.VITE_API_BASE;
-const AUTH_TOKEN = import.meta.env.VITE_AUTH_TOKEN;
+const AUTH_TOKEN = getAuthToken();
 
 export default function ExchangeRequestView() {
   const { requestId } = useParams();

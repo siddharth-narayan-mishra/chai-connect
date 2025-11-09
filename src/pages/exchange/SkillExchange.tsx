@@ -14,9 +14,10 @@ import { Label } from "@/components/ui/label";
 import { Plus, Sparkles, TrendingUp, Search, Filter } from "lucide-react";
 import { toast } from "sonner";
 import ExchangePostCard from "./components/ExchangePostCard";
+import { getAuthToken } from "@/lib/getAuthToken";
 
 const API_BASE = import.meta.env.VITE_API_BASE;
-const AUTH_TOKEN = import.meta.env.VITE_AUTH_TOKEN;
+const AUTH_TOKEN = getAuthToken();
 
 export default function SkillExchange() {
   const [posts, setPosts] = useState([]);

@@ -22,9 +22,10 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { getAuthToken } from "@/lib/getAuthToken";
 
 const API_BASE = import.meta.env.VITE_API_BASE;
-const AUTH_TOKEN = import.meta.env.VITE_AUTH_TOKEN;
+const AUTH_TOKEN = getAuthToken();
 
 export default function Events() {
   const [events, setEvents] = useState([]);
@@ -145,26 +146,6 @@ export default function Events() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
-      {/* Header */}
-      <header className="bg-card border-b sticky top-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <PlusCircle className="w-6 h-6 text-primary" />
-            <div>
-              <h1 className="text-2xl font-bold text-foreground">
-                bytee Events
-              </h1>
-              <p className="text-xs text-muted-foreground">
-                Explore, learn, and collaborate with the community.
-              </p>
-            </div>
-          </div>
-          <Button size="sm" onClick={() => setOpen(true)}>
-            Create Event
-          </Button>
-        </div>
-      </header>
-
       {/* Event Grid */}
       <main className="max-w-6xl mx-auto px-4 py-8">
         {events.length === 0 ? (
