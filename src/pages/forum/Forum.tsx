@@ -60,6 +60,7 @@ export default function CollegeForum() {
       setPosts(res.data.posts);
     } catch (err) {
       console.error("Error fetching posts:", err.message);
+      toast.error("Couldn't fetch posts.");
     }
   };
 
