@@ -105,29 +105,6 @@ export default function PostDetailPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
-      {/* Header */}
-      <header className="bg-card border-b sticky top-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/60 rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">
-                S
-              </span>
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-foreground">bytee</h1>
-              <p className="text-xs text-muted-foreground">
-                College Community Forum
-              </p>
-            </div>
-          </div>
-          <div className="flex gap-2">
-            <Button variant="outline" size="sm">
-              Login
-            </Button>
-          </div>
-        </div>
-      </header>
 
       <div className="max-w-5xl mx-auto px-4 py-6">
         {/* Post Content */}

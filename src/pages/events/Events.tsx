@@ -69,10 +69,9 @@ export default function Events() {
       );
 
       toast.success(res.data?.message || "Joined event successfully!");
-      fetchEvents(); // refresh events to update participant count
+      fetchEvents();
     } catch (err: any) {
       console.error("Join event error:", err.response?.data || err.message);
-
       if (err.response?.status === 400) {
         toast.info(err.response.data?.message || "Already joined this event");
       } else {
@@ -146,8 +145,25 @@ export default function Events() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
+      {/* Header */}
+      <header className="max-w-6xl mx-auto px-4 py-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h1 className="text-3xl font-bold text-foreground tracking-tight">
+            Community Events
+          </h1>
+          <p className="text-muted-foreground text-sm mt-1">
+            Discover, join, and host events with your peers.
+          </p>
+        </div>
+
+        <Button onClick={() => setOpen(true)} className="gap-2">
+          <PlusCircle className="w-4 h-4" />
+          Create Event
+        </Button>
+      </header>
+
       {/* Event Grid */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
+      <main className="max-w-6xl mx-auto px-4 pb-16">
         {events.length === 0 ? (
           <div className="text-center text-muted-foreground py-20">
             No events yet. Be the first to host one!

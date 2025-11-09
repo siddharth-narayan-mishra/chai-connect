@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Briefcase, BookOpen, Code, MessageSquare, Coffee, ShieldQuestion, Calendar, Award, Video } from "lucide-react";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const features = [

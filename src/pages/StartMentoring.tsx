@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -52,7 +51,6 @@ export default function StartMentoring() {
 
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="pt-24 pb-16 bg-muted/30">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="mb-6">

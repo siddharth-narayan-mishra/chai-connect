@@ -7,7 +7,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Code, GitBranch, Lightbulb, Users } from "lucide-react";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -38,7 +37,6 @@ const ProjectHelp = () => {
 
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="pt-24 pb-16 bg-gradient-hero">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">

@@ -3,12 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { MessageSquare, Presentation, Users, TrendingUp, Send } from "lucide-react";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 
-// TODO: Add your Gemini API key here or use environment variable
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || "";
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
@@ -98,7 +96,6 @@ Provide practical, actionable advice with examples. Be encouraging, supportive, 
 
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="pt-24 pb-16 bg-gradient-hero">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
