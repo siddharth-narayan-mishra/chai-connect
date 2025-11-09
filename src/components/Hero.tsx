@@ -5,7 +5,7 @@ import heroImage from "@/assets/hero-community.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-hero pt-20">
+    <section className="relative min-h-screen flex items-center bg-gradient-hero">
       <div className="container mx-auto px-4 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
