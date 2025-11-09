@@ -1,9 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { formatDate } from "@/lib/utils";
 import { ArrowDown, ArrowUp, Clock, MessageSquare, Share2 } from "lucide-react";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function PostCard({ post, handleVote }) {
+  const navigate = useNavigate();
   return (
     <Card className="hover:shadow-md transition-shadow">
       <CardContent className="p-4">
@@ -34,14 +35,19 @@ export default function PostCard({ post, handleVote }) {
           </div>
 
           {/* Content Section */}
-          <div className="flex-1">
+          <div
+            className="flex-1"
+            onClick={() => {
+              navigate(`/post/${post._id}`);
+            }}
+          >
             <div className="flex items-start justify-between mb-2">
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
                 {/* <Avatar className="w-6 h-6">
-                  <AvatarFallback className="text-xs bg-gradient-to-br from-primary/80 to-primary">
-                    {post.avatar}
-                  </AvatarFallback>
-                </Avatar> */}
+                    <AvatarFallback className="text-xs bg-gradient-to-br from-primary/80 to-primary">
+                      {post.avatar}
+                    </AvatarFallback>
+                  </Avatar> */}
                 <span className="font-medium text-foreground">
                   {post.authorUsername}
                 </span>
@@ -53,10 +59,7 @@ export default function PostCard({ post, handleVote }) {
               </div>
             </div>
 
-            <h2
-              onClick={() => redirect(`/posts/:postId`)}
-              className="text-lg font-semibold text-foreground mb-2 hover:text-primary cursor-pointer transition-colors"
-            >
+            <h2 className="text-lg font-semibold text-foreground mb-2 hover:text-primary cursor-pointer transition-colors">
               {post.title}
             </h2>
 
@@ -65,10 +68,7 @@ export default function PostCard({ post, handleVote }) {
             </p>
 
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              <button
-                onClick={() => redirect(`/posts/:postId`)}
-                className="flex items-center gap-1 hover:text-primary transition-colors"
-              >
+              <button className="flex items-center gap-1 hover:text-primary transition-colors">
                 <MessageSquare className="w-4 h-4" />
                 <span>
                   {post.commentCount}{" "}
