@@ -8,7 +8,7 @@ import NotFound from "./pages/NotFound";
 import UserProfile from "./pages/UserProfile";
 import MyProfile from "./pages/UserProfileOwn";
 import ForumPage from "./pages/forum/Forum";
-import SkillExchangeBoard from "./pages/SkillExchange";
+import SkillExchangeBoard from "./pages/exchange/SkillExchange";
 import Auth from "./pages/Auth";
 import Features from "./pages/Features";
 import CareerGuidance from "./pages/CareerGuidance";
@@ -16,15 +16,15 @@ import AcademicSupport from "./pages/AcademicSupport";
 import ProjectHelp from "./pages/ProjectHelp";
 import SoftSkills from "./pages/SoftSkills";
 import Credits from "./pages/Credits";
-import AnonymousQA from "./pages/Forum";
-import Events from "./pages/Events";
-import Events2 from "./pages/events2";
+import SkillExchange from "./pages/exchange/SkillExchange";
 import TrustScore from "./pages/TrustScore";
 import VideoAnalyzer from "./pages/VideoAnalyzer";
 import Sessions from "./pages/Sessions";
 import StartMentoring from "./pages/StartMentoring";
 import { useEffect, useState } from "react";
 import PostDetailPage from "./pages/forum/components/PostDetails";
+import Events from "./pages/events/Events";
+import AnonymousQA from "./pages/AnonymousQA";
 
 const queryClient = new QueryClient();
 
@@ -78,9 +78,9 @@ const App = () => {
             <Route path="/project-help" element={<ProjectHelp />} />
             <Route path="/soft-skills" element={<SoftSkills />} />
             <Route path="/credits" element={<Credits />} />
-            <Route path="/anonymous-qa" element={<AnonymousQA />} />
+            <Route path="/anonymous-qa" element={<AnonymousQA/>} />
             <Route path="/events" element={<Events />} />
-            <Route path="/events2" element={<Events2 />} />
+            <Route path="/skillExchange" element={<SkillExchange />} />
             <Route path="/start-mentoring" element={<StartMentoring />} />
             <Route path="/trust-score" element={<TrustScore />} />
             <Route path="/video-analyzer" element={<VideoAnalyzer />} />
