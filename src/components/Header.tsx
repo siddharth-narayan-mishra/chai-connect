@@ -25,9 +25,9 @@ const Header = () => {
             <a href="forum" className="text-foreground hover:text-primary transition-colors">
               Forum
             </a>
-            <a href="events" className="text-foreground hover:text-primary transition-colors">
+            <Link to="/events2" className="text-foreground hover:text-primary transition-colors">
               Events
-            </a>
+            </Link>
           </nav>
 
           <div className="flex items-center gap-3">

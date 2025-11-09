@@ -16,8 +16,9 @@ import AcademicSupport from "./pages/AcademicSupport";
 import ProjectHelp from "./pages/ProjectHelp";
 import SoftSkills from "./pages/SoftSkills";
 import Credits from "./pages/Credits";
-import AnonymousQA from "./pages/forum/Forum";
-import Events from "./pages/events/Events";
+import AnonymousQA from "./pages/Forum";
+import Events from "./pages/Events";
+import Events2 from "./pages/events2";
 import TrustScore from "./pages/TrustScore";
 import VideoAnalyzer from "./pages/VideoAnalyzer";
 import Sessions from "./pages/Sessions";
@@ -79,6 +80,7 @@ const App = () => {
             <Route path="/credits" element={<Credits />} />
             <Route path="/anonymous-qa" element={<AnonymousQA />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/events2" element={<Events2 />} />
             <Route path="/start-mentoring" element={<StartMentoring />} />
             <Route path="/trust-score" element={<TrustScore />} />
             <Route path="/video-analyzer" element={<VideoAnalyzer />} />
