@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SkillExchange from "@/components/SkillExchange";
 import Mentorship from "@/components/Mentorship";
